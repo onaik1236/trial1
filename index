@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 Sensor Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      font-size: 1.2em;
+      color: #666;
+    }
+  </style>
+  <script>
+    // Function to fetch data from the ESP32
+    async function fetchData() {
+      try {
+        const response = await fetch('http://<ESP32_IP_ADDRESS>/data');
+        const data = await response.json();
+        
+        // Update the HTML elements with the sensor data
+        document.getElementById('sensorValue1').textContent = data.sensorValue1;
+        document.getElementById('sensorValue2').textContent = data.sensorValue2;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    // Fetch data every 5 seconds
+    setInterval(fetchData, 5000);
+  </script>
+</head>
+<body>
+
+  <h1>ESP32 Sensor Data</h1>
+  <p>Sensor Value 1: <span id="sensorValue1">Loading...</span></p>
+  <p>Sensor Value 2: <span id="sensorValue2">Loading...</span></p>
+
+</body>
+</html>
