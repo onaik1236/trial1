@@ -22,7 +22,7 @@
     // Function to fetch data from the ESP32
     async function fetchData() {
       try {
-        const response = await fetch('http://192.168.142.252/data');
+        const response = await fetch('http://192.168.142.252/data');  // Replace with your ESP32 IP
         const data = await response.json();
         
         // Update the HTML elements with the sensor data
@@ -45,3 +45,4 @@
 
 </body>
 </html>
+
